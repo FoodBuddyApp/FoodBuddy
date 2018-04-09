@@ -5,12 +5,20 @@ import { withRouter } from 'react-router-dom';
 import * as actionCreators from './actions/actionCreators';
 
 class Main extends Component {
-  render() {
-    return (
-      // Add your component markup and other subcomponent references here.
-      <h1>Hello, World!</h1>
-    );
-  }
+   constructor(props) {
+      super(props);
+   }
+
+   componentDidMount() {
+      console.log("Mounted", this.props);
+   }
+
+   render() {
+      return (
+         // Add your component markup and other subcomponent references here.
+         <h1>Hello, World!</h1>
+      );
+   }
 }
 
 // These are the properties we'll automatically pass to Main
