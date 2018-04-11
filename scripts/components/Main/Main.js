@@ -5,6 +5,7 @@ import {
 } from 'react-bootstrap';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
+import Search from '../Search/Search'
 
 export default class Main extends Component {
    constructor(props) {
@@ -26,6 +27,8 @@ export default class Main extends Component {
             </div>
             <div>
                <Switch>
+                  <Route path='/'
+                     render={() => <Search {...this.props} />} />
                </Switch>
             </div>
          </div>

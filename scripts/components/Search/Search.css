@@ -1,0 +1,12 @@
+.hCentered-div {
+   align-content: center;
+   text-align: center;
+}
+
+.centered-div {
+   position: relative;
+   align-content: center;
+   text-align: center;
+   padding-top: 100px;
+   width: 300px;
+}
