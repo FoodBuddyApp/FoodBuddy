@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actionCreators from './actions/actionCreators';
 
+import FakeComponent from './components/fakeComponent/fakeComponent';
+
 class Main extends Component {
    constructor(props) {
       super(props);
@@ -15,8 +17,10 @@ class Main extends Component {
 
    render() {
       return (
-         // Add your component markup and other subcomponent references here.
-         <h1>Hello, World!</h1>
+         <div>
+            <h1>HELLO, WORLD!</h1>
+            <FakeComponent />
+         </div>
       );
    }
 }

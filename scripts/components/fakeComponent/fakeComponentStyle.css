@@ -1,0 +1,6 @@
+.test {
+   width: 200px;
+   height: 200px;
+   position: absolute;
+   background-color: rgba(0, 0, 0, 0.2);
+}
