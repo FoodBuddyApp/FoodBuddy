@@ -4,3 +4,10 @@ export function test(data, cb) {
       dispatch({type: 'TEST'});
    };
 }
+
+export function searchRecipes(ingredients) {
+   console.log("TODO: Implement search actionCreator")
+   return (dispatch, prevState) => {
+      dispatch({type: 'SEARCH'});
+   }
+}

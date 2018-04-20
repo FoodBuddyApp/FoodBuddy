@@ -1,12 +1,28 @@
 .hCentered-div {
    align-content: center;
    text-align: center;
+   height: auto;
+   width: auto;
 }
 
 .centered-div {
    position: relative;
-   align-content: center;
    text-align: center;
-   padding-top: 100px;
-   width: 300px;
+   width: 600px;
+   margin: 100px auto;
+}
+
+.ingredientList {
+   text-align: left;
+   width: auto;
+   height: auto;
+   margin: 10px 0px 10px 0px;
+}
+
+.ingredient {
+   display: inline-block;
+   position: relative;
+   width: auto;
+   height: uto;
+   padding: 0px 10px 10px 0px;
 }
