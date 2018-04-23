@@ -28,7 +28,7 @@ export default class Main extends Component {
             <div>
                <Switch>
                   <Route path='/'
-                     render={() => <Search Ingredients={["chicken", "olive oil", "basil", "salt", "pepper", "apples", "barbeque sauce", "cheese", "garlic salt"]} {...this.props} />} />
+                     render={() => <Search {...this.props} />} />
                </Switch>
             </div>
          </div>

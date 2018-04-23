@@ -1,3 +1,5 @@
+import * as api from '../api';
+
 export function test(data, cb) {
    console.log("test action creator");
    return (dispatch, prevState) => {
@@ -5,9 +7,11 @@ export function test(data, cb) {
    };
 }
 
-export function searchRecipes(ingredients) {
-   console.log("TODO: Implement search actionCreator")
+export function searchRecipes(body) {
    return (dispatch, prevState) => {
-      dispatch({type: 'SEARCH'});
+      api.getRecipes(body)
+         .then((response) => {
+            dispatch({type: 'GET_RECIPES', recipes: response.results})
+         })
    }
 }
