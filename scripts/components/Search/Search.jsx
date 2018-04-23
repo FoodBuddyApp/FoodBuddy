@@ -41,7 +41,7 @@ export default class Search extends Component {
    }
 
    searchRecipes() {
-      this.props.searchRecipes({ingredients: this.state.ingredients})
+      this.props.searchRecipes({includeIngredients: this.state.ingredients})
    }
 
    render() {
