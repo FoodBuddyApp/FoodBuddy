@@ -8,9 +8,6 @@ export function test(data, cb) {
 }
 
 export function searchRecipes(body) {
-   console.log("TODO: Implement search actionCreator")
-
-   console.log(body)
    return (dispatch, prevState) => {
       api.getRecipes(body)
          .then((response) => {
