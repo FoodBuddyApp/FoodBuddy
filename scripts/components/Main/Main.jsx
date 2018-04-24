@@ -5,7 +5,7 @@ import {
 } from 'react-bootstrap';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import {Search, Recipes} from '../index.js'
+import {Search, Recipes, RecipeDetail} from '../index.js'
 
 export default class Main extends Component {
    constructor(props) {
@@ -20,7 +20,7 @@ export default class Main extends Component {
                <Navbar>
                   <Navbar.Header>
                      <Navbar.Brand>
-                        <a href="#home">Food Buddy</a>
+                        <a href="/">Food Buddy</a>
                      </Navbar.Brand>
                   </Navbar.Header>
                </Navbar>
@@ -30,7 +30,29 @@ export default class Main extends Component {
                   <Route exact path='/'
                      render={() => <Search {...this.props} />} />
                   <Route path='/recipes'
-                     render={() => <Recipes {...this.props} />} />
+                     render={() => {
+                        if(this.props.Recipes)
+                           return <Recipes {...this.props} />
+                        else
+                           return <Redirect to='/' />
+                     }}
+                  />
+                  <Route path='/detail/:id'
+                     render={({match}) => {
+                        console.log(match)
+                        var recipe = this.props.Recipes.find((recipe) => 
+                           recipe.id == match.params.id)
+                        if(recipe) {
+                           return <RecipeDetail 
+                                    {...recipe}
+                                    {...this.props} 
+                                  />
+                        }
+                        else {
+                           return <Redirect to='/' />
+                        }
+                     }}
+                  />
                </Switch>
             </div>
          </div>
