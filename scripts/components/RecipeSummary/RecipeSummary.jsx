@@ -10,9 +10,14 @@ export default class Recipes extends Component {
       this.state = {};
 
       this.recipeClicked = this.recipeClicked.bind(this)
+      this.transitionToDetail = this.transitionToDetail.bind(this)
    }
 
    recipeClicked() {
+      this.props.getRecipeDetail({id: this.props.id}, this.transitionToDetail)
+   }
+
+   transitionToDetail() {
       this.props.history.push('/detail/' + this.props.id)
    }
 

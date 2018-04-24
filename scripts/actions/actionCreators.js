@@ -16,3 +16,14 @@ export function searchRecipes(body, cb) {
          .then(() => cb())
    }
 }
+
+export function getRecipeDetail(body, cb) {
+   return (dispatch, prevState) => {
+      api.getRecipeDetail(body)
+         .then((response) => {
+            console.log(response)
+            dispatch({type: 'GET_RECIPE_DETAIL', recipe: response})
+         })
+         .then(() => cb())
+   }
+}
