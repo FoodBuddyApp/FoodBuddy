@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
-   Button, FormGroup, InputGroup, FormControl, Glyphicon
+   Alert, Button, FormGroup, InputGroup, FormControl, Glyphicon
 } from 'react-bootstrap';
+import { RingLoader } from 'react-spinners'
 import './Search.css'
 
 export default class Search extends Component {
@@ -10,13 +11,16 @@ export default class Search extends Component {
 
       this.state = {
          currentIngredient: "",
-         ingredients: []
+         ingredients: [],
+         loading: false,
+         error: false
       }
 
       this.searchRecipes = this.searchRecipes.bind(this)
       this.removeIngredient = this.removeIngredient.bind(this)
       this.addIngredient = this.addIngredient.bind(this)
       this.handleChange = this.handleChange.bind(this)
+      this.transitionToRecipes = this.transitionToRecipes.bind(this)
    }
 
    handleChange(event) {
@@ -41,60 +45,92 @@ export default class Search extends Component {
    }
 
    searchRecipes() {
-      this.props.searchRecipes({includeIngredients: this.state.ingredients})
+      this.setState({loading: true, error: false})
+      this.props.searchRecipes({includeIngredients: this.state.ingredients}, this.transitionToRecipes)
+   }
+
+   transitionToRecipes() {
+      if(this.props.Recipes.length > 0) {
+         console.log(this.props)
+         this.setState({loading: false, error: false})
+         this.props.history.push('/recipes')
+      }
+      else {
+         this.setState({loading: false, error: true})
+      }
    }
 
    render() {
       return (
-         <div className="centered-div">
-            <h1>Search Recipes by Ingredient</h1>
-            <div className="centered-div">
-               <p>Enter in as many ingredients as you like and we will find recipes
-               using only those ingredients!
-               </p>
-               <FormGroup>
-                  <InputGroup>
-                     <FormControl 
-                        type="text"
-                        name="currentIngredient"
-                        value={this.state.currentIngredient}
-                        placeholder="Type one ingredient, then press Enter or click Add"
-                        onChange={this.handleChange}
-                        onKeyPress={(e) => {if(e.key === 'Enter') this.addIngredient()}}
-                     />
-                     <InputGroup.Button>
-                     <Button bsStyle="danger" onClick={this.addIngredient}>
-                        Add
-                     </Button>
-                     </InputGroup.Button>
-                  </InputGroup>
-               </FormGroup>
-               <div className="ingredientList">
-                  {this.state.ingredients.map((i) => {
-                     return (
-                        <span className="ingredient" key={i}>
-                           <Button
-                              bsSize="small" 
-                              onClick={(e) => {
-                                 this.removeIngredient(i)
-                              }}
-                           >
-                              {i + " "}
-                              <Glyphicon glyph="remove" />
+         <div>
+            {!this.state.loading ?
+               <div className="small-centered-div">
+                  <h1>Search Recipes by Ingredient</h1>
+                  <div className="small-centered-div">
+                     <p>Enter in as many ingredients as you like and we will find recipes
+                     using only those ingredients!
+                     </p>
+                     <FormGroup>
+                        <InputGroup>
+                           <FormControl 
+                              type="text"
+                              name="currentIngredient"
+                              value={this.state.currentIngredient}
+                              placeholder="Type one ingredient, then press Enter or click Add"
+                              onChange={this.handleChange}
+                              onKeyPress={(e) => {if(e.key === 'Enter') this.addIngredient()}}
+                           />
+                           <InputGroup.Button>
+                           <Button bsStyle="danger" onClick={this.addIngredient}>
+                              Add
                            </Button>
-                        </span>
-                     )
-                  })}
+                           </InputGroup.Button>
+                        </InputGroup>
+                     </FormGroup>
+                     <div className="ingredientList">
+                        {this.state.ingredients.map((i) => {
+                           return (
+                              <span className="ingredient" key={i}>
+                                 <Button
+                                    bsSize="small" 
+                                    onClick={(e) => {
+                                       this.removeIngredient(i)
+                                    }}
+                                 >
+                                    {i + " "}
+                                    <Glyphicon glyph="remove" />
+                                 </Button>
+                              </span>
+                           )
+                        })}
+                     </div>
+                     <Button 
+                        bsStyle="primary" 
+                        disabled={!this.state.ingredients.length}
+                        onClick={() => this.searchRecipes()}
+                        block
+                     >
+                        Search!
+                     </Button>
+                     {this.state.error ?
+                        <Alert 
+                           bsStyle="danger"
+                        >
+                           Uh oh, something went wrong! Please try again.
+                        </Alert>
+                        :
+                        ''
+                     }
+                  </div>
                </div>
-               <Button 
-                  bsStyle="primary" 
-                  disabled={!this.state.ingredients.length}
-                  onClick={() => this.searchRecipes()}
-                  block
-               >
-                  Search!
-               </Button>
-            </div>
+               :
+               <div className="loader">
+                  <RingLoader
+                     color={'#123abc'}
+                     loading={this.state.loading}
+                  />
+               </div>
+            }
          </div>
       );
    }

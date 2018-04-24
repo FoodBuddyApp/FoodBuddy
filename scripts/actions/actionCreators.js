@@ -7,11 +7,12 @@ export function test(data, cb) {
    };
 }
 
-export function searchRecipes(body) {
+export function searchRecipes(body, cb) {
    return (dispatch, prevState) => {
       api.getRecipes(body)
          .then((response) => {
             dispatch({type: 'GET_RECIPES', recipes: response.results})
          })
+         .then(() => cb())
    }
 }

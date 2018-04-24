@@ -1,0 +1,43 @@
+.cell {
+   border-style: solid;
+   border-radius: 30px;
+   border-color: black;
+   overflow: hidden;
+   width: 100%;
+   text-align: left;
+   margin-bottom: 10px;
+}
+
+.overlay {
+   position: relative;
+}
+
+.overlay:after {
+   position: absolute;
+   content: ''; 
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(225, 225, 225, 1);
+   opacity: 0;
+   cursor: pointer;
+}
+
+.overlay:hover:after {
+   opacity: .5;
+}
+
+.image {
+   float: left;
+}
+
+.text {
+   float: left;
+   margin-left: 10px
+}
+
+.info {
+   position: absolute;
+   bottom: 0;
+}
