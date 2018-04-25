@@ -5,7 +5,7 @@
    width: auto;
 }
 
-.centered-div {
+.small-centered-div {
    position: relative;
    text-align: center;
    width: 600px;
@@ -17,6 +17,13 @@
    width: auto;
    height: auto;
    margin: 10px 0px 10px 0px;
+}
+
+.loader {
+   height: 500px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 .ingredient {

@@ -5,7 +5,7 @@ import {
 } from 'react-bootstrap';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import Search from '../Search/Search'
+import {Search, Recipes} from '../index.js'
 
 export default class Main extends Component {
    constructor(props) {
@@ -27,8 +27,10 @@ export default class Main extends Component {
             </div>
             <div>
                <Switch>
-                  <Route path='/'
+                  <Route exact path='/'
                      render={() => <Search {...this.props} />} />
+                  <Route path='/recipes'
+                     render={() => <Recipes {...this.props} />} />
                </Switch>
             </div>
          </div>

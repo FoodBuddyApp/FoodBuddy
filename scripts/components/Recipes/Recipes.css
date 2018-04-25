@@ -1,0 +1,17 @@
+.hCentered-div {
+   align-content: center;
+   text-align: center;
+   height: auto;
+   width: auto;
+}
+
+.centered-div {
+   position: relative;
+   text-align: center;
+   width: 1200px;
+   margin: 100px auto;
+}
+
+.list {
+   margin-top: 50px;
+}
