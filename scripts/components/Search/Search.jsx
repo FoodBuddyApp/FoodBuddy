@@ -55,9 +55,9 @@ export default class Search extends Component {
       //ingredients
       this.state.ingredients.map((ingr, idx) => {
          if(this.state.ingredients.length - idx > 1)
-            url += `${ingr}%2C`;
+            url += `${ingr.toLowerCase()}%2C`;
          else
-            url += `${ingr}&`;
+            url += `${ingr.toLowerCase()}&`;
       })
 
       //diet
@@ -65,9 +65,9 @@ export default class Search extends Component {
          if(idx == 0)
             url += `diet=`;
          if(diet.length - idx > 1)
-            url += `${item.label}%2C`;
+            url += `${item.label.toLowerCase()}%2C`;
          else
-            url += `${item.label}&`;
+            url += `${item.label.toLowerCase()}&`;
       })
 
       //intolerances 
@@ -75,12 +75,12 @@ export default class Search extends Component {
          if(idx == 0)
             url += `intolerances=`;
          if(intolerances.length - idx > 1)
-            url += `${item.label}%2C`;
+            url += `${item.label.toLowerCase()}%2C`;
          else
-            url += `${item.label}&`;
+            url += `${item.label.toLowerCase()}&`;
       })
 
-      url += `number=5&fillIngredients=true&instructionsRequired=true&ranking=1`;
+      url += `number=10&fillIngredients=true&instructionsRequired=true&ranking=1`;
       console.log(url);
 
       // this.props.searchRecipes({includeIngredients: this.state.ingredients}, this.transitionToRecipes)
