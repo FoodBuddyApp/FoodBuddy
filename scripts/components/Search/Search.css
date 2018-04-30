@@ -33,3 +33,30 @@
    height: uto;
    padding: 0px 10px 10px 0px;
 }
+
+.animated {
+   -webkit-animation-duration: 2s;
+   animation-duration: 2s;
+   -webkit-animation-fill-mode: both;
+   animation-fill-mode: both;
+}
+
+.fadeIn {
+   -webkit-animation-name: fadeIn;
+   animation-name: fadeIn;
+}
+
+.fadeOut {
+   -webkit-animation-name: fadeOut;
+   animation-name: fadeOut;
+}
+
+@keyframes fadeIn {
+   0% {opacity: 0; height: 0px;}
+   100% {opacity: 1; height: 460px;}
+}
+
+@keyframes fadeOut {
+   0% {opacity: 1; height: 460px;}
+   100% {opacity: 0; height: 0px;}
+} 
