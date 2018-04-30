@@ -60,7 +60,7 @@ export function del(endpoint) {
 
 // Functions for performing the api requests
 
-export function getRecipes(body) {
-   return post('recipe', body)
+export function getRecipes(url) {
+   return get(url)
       .then((res) => res.json())
 }
