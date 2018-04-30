@@ -4,6 +4,7 @@ import {
 } from 'react-bootstrap';
 import { RingLoader } from 'react-spinners'
 import './Search.css'
+import Options from '../Options/Options';
 
 export default class Search extends Component {
    constructor(props) {
@@ -13,7 +14,8 @@ export default class Search extends Component {
          currentIngredient: "",
          ingredients: [],
          loading: false,
-         error: false
+         error: false,
+         activeKeys: null
       }
 
       this.searchRecipes = this.searchRecipes.bind(this)
@@ -45,8 +47,44 @@ export default class Search extends Component {
    }
 
    searchRecipes() {
+      let diet = this.props.Options.diet;
+      let intolerances = this.props.Options.intolerances;
       this.setState({loading: true, error: false})
-      this.props.searchRecipes({includeIngredients: this.state.ingredients}, this.transitionToRecipes)
+      let url = 'recipe?includeIngredients=';
+      
+      //ingredients
+      this.state.ingredients.map((ingr, idx) => {
+         if(this.state.ingredients.length - idx > 1)
+            url += `${ingr}%2C`;
+         else
+            url += `${ingr}&`;
+      })
+
+      //diet
+      diet.map((item, idx) => {
+         if(idx == 0)
+            url += `diet=`;
+         if(diet.length - idx > 1)
+            url += `${item.label}%2C`;
+         else
+            url += `${item.label}&`;
+      })
+
+      //intolerances 
+      intolerances.map((item, idx) => {
+         if(idx == 0)
+            url += `intolerances=`;
+         if(intolerances.length - idx > 1)
+            url += `${item.label}%2C`;
+         else
+            url += `${item.label}&`;
+      })
+
+      url += `number=5&fillIngredients=true&instructionsRequired=true&ranking=1`;
+      console.log(url);
+
+      // this.props.searchRecipes({includeIngredients: this.state.ingredients}, this.transitionToRecipes)
+      this.props.searchRecipes(url, this.transitionToRecipes);
    }
 
    transitionToRecipes() {
@@ -58,6 +96,14 @@ export default class Search extends Component {
       else {
          this.setState({loading: false, error: true})
       }
+   }
+
+   renderOptions() {
+      return (
+         <div className={this.state.activeKeys ? "animated fadeIn" : "animated fadeOut"}>
+            <Options {...this.props}/>
+         </div>
+      );
    }
 
    render() {
@@ -104,6 +150,16 @@ export default class Search extends Component {
                            )
                         })}
                      </div>
+                     <Button 
+                        bsStyle="info" 
+                        onClick={() => this.state.activeKeys == "options" ? this.setState({activeKeys: null}) : this.setState({activeKeys: "options"})}
+                        block
+                     >
+                        Options
+                     </Button>
+
+                     {this.renderOptions()}
+
                      <Button 
                         bsStyle="primary" 
                         disabled={!this.state.ingredients.length}

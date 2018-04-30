@@ -7,9 +7,9 @@ export function test(data, cb) {
    };
 }
 
-export function searchRecipes(body, cb) {
+export function searchRecipes(url, cb) {
    return (dispatch, prevState) => {
-      api.getRecipes(body)
+      api.getRecipes(url)
          .then((response) => {
             dispatch({type: 'GET_RECIPES', recipes: response.results})
          })
@@ -25,5 +25,16 @@ export function getRecipeDetail(body, cb) {
             dispatch({type: 'GET_RECIPE_DETAIL', recipe: response})
          })
          .then(() => cb())
+}
+   
+export function updateDiet(diet) {
+   return (dispatch, prevState) => {
+      dispatch({type: 'UPDATE_DIET', diet});
+   }
+}
+
+export function updateIntolerances(intolerances) {
+   return (dispatch, prevState) => {
+      dispatch({type: 'UPDATE_INTOLERANCE', intolerances});
    }
 }
