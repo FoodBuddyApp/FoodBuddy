@@ -47,24 +47,26 @@ export default class Options extends Component {
    }
 
    render() {
-      console.log(this.props);
+      var className = this.props.display ? "options" : "none";
       return (
-         <div className="options">
-            <div>
+         <div className={className}>
+            <div style={{width: "50%"}}>
                <h3>Diet</h3>
                <MultiSelect
                   items={this.state.diet}
                   selectedItems={this.state.selectedDiet}
                   onChange={(item) => this.updateDiet(item)}
+                  showSelectedItems={false}
                />
             </div>
 
-            <div>
+            <div style={{width: "50%"}}>
                <h3>Intolerances</h3>
                <MultiSelect
                   items={this.state.intolerances}
                   selectedItems={this.state.selectedIntolerances}
                   onChange={(item) => this.updateIntolerances(item)}
+                  showSelectedItems={false}
                />
             </div>
          </div>

@@ -51,6 +51,21 @@
    animation-name: fadeOut;
 }
 
+.none {
+   -webkit-animation-duration: 2s;
+   animation-duration: 2s;
+   -webkit-animation-fill-mode: both;
+   animation-fill-mode: both;
+   -webkit-animation-name: none;
+   animation-name: none;
+   display: none;
+}
+
+@keyframes none {
+   0% {opacity: 1;}
+   100% {opacity: 0;}
+}
+
 @keyframes fadeIn {
    0% {opacity: 0; height: 0px;}
    100% {opacity: 1; height: 460px;}
@@ -58,5 +73,5 @@
 
 @keyframes fadeOut {
    0% {opacity: 1; height: 460px;}
-   100% {opacity: 0; height: 0px;}
+   100% {opacity: 0; height: 0px; display: none;}
 } 

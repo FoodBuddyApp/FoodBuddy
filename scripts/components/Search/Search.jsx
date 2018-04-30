@@ -15,7 +15,7 @@ export default class Search extends Component {
          ingredients: [],
          loading: false,
          error: false,
-         activeKeys: null
+         showOptions: null
       }
 
       this.searchRecipes = this.searchRecipes.bind(this)
@@ -99,9 +99,10 @@ export default class Search extends Component {
    }
 
    renderOptions() {
+      var displayStatus = this.state.showOptions ? "animated fadeIn" : this.state.showOptions !== null ? "animated fadeOut" : "none"
       return (
-         <div className={this.state.activeKeys ? "animated fadeIn" : "animated fadeOut"}>
-            <Options {...this.props}/>
+         <div className={displayStatus}>
+            <Options {...this.props} display={this.state.showOptions ? true : false}/>
          </div>
       );
    }
@@ -152,7 +153,7 @@ export default class Search extends Component {
                      </div>
                      <Button 
                         bsStyle="info" 
-                        onClick={() => this.state.activeKeys == "options" ? this.setState({activeKeys: null}) : this.setState({activeKeys: "options"})}
+                        onClick={() => this.state.showOptions ? this.setState({showOptions: false}) : this.setState({showOptions: true})}
                         block
                      >
                         Options
