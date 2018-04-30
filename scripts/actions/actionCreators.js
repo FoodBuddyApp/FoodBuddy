@@ -25,6 +25,7 @@ export function getRecipeDetail(body, cb) {
             dispatch({type: 'GET_RECIPE_DETAIL', recipe: response})
          })
          .then(() => cb())
+   }
 }
    
 export function updateDiet(diet) {
