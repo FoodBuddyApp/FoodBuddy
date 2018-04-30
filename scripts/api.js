@@ -64,3 +64,8 @@ export function getRecipes(url) {
    return get(url)
       .then((res) => res.json())
 }
+
+export function getRecipeDetail(body) {
+   return get('recipe/' + body.id)
+      .then((res) => res.json())
+}
