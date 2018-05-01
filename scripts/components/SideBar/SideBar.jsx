@@ -23,7 +23,6 @@ export default class SideBar extends Component {
       return (
          <div className={renderStatus}>
             <div className="sideBar">
-               <Nav style={{height: "100%"}}>
                   <a href="login" style={{display: "block", outline: "none"}}>
                      <i className="fa fa-fw fa-user" />
                      <span className="item-list">Login</span>
@@ -33,7 +32,6 @@ export default class SideBar extends Component {
                      <i className="fa fa-fw fa-pencil" />
                      <span className="item-list">Sign Up</span>
                   </a>
-               </Nav>
             </div>
          </div>
       );

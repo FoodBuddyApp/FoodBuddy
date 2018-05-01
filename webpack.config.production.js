@@ -55,11 +55,15 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['.js', '.jsx'],
+    modules: [
+      'node_modules'
+   ]
   },
   devtool: 'source-map',
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
+   //  new webpack.optimize.OccurenceOrderPlugin(),
+   new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
@@ -75,9 +79,13 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
         include: path.join(__dirname, 'scripts')
-      }
+      },
+      {
+         test: /\.css$/,
+         loaders: ['style-loader', 'css-loader']
+       }
     ]
   }
 };
