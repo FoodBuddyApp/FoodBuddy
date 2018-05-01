@@ -35,7 +35,7 @@ app.use(function(req, res) {
 })
 
 var port = process.env.PORT || 5000;
-var host = 'localhost';
+var host = '0.0.0.0';
 
 new WebpackDevServer(webpack(config), {
    publicPath: config.output.publicPath,
