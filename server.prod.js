@@ -13,7 +13,7 @@ app.get('/', function(request, response) {
 
 
 app.use(function(req, res) {
-   res.header("Content-Type", "application/javascrip");
+   res.header("Content-Type", "application/javascript");
 })
 
 new WebpackDevServer(webpack(config), {
