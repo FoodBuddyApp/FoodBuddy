@@ -1,0 +1,73 @@
+.sideBarContainer {
+   position: absolute;
+   right: inherit;
+   z-index: 1100;
+   width: 200px;
+   height: 100%;
+   top: 52px;
+}
+
+.easeIn {
+   transition: all 0.5s;
+   -webkit-animation-duration: 1s;
+   animation-duration: 1s;
+   -webkit-animation-fill-mode: both;
+   animation-fill-mode: both;
+   -webkit-animation-name: ease;
+   animation-name: ease;
+}
+
+.sideBar {
+   height: 100%;
+   box-sizing: border-box;
+   overflow: auto;
+   background: rgba(196, 185, 199, 0.6);
+   padding: 2.5em 1.5em 0;
+   font-size: 1.3em;
+}
+
+.none {
+   display: none;
+}
+
+.easeOut {
+   /* display: none; */
+   /* transition: all 0.5s; */
+   -webkit-animation-duration: 1s;
+   animation-duration: 1s;
+   -webkit-animation-fill-mode: both;
+   animation-fill-mode: both;
+   -webkit-animation-name: fadeout;
+   animation-name: fadeout;
+}
+
+a {
+   display: block;
+   outline: none;
+   padding-bottom: 10px;
+}
+
+a:hover {
+   color: #c94e50 !important;
+}
+
+.item-list {
+   padding: 0.8em;
+   color: #000;
+   margin-left: 10px;
+   font-weight: 700;
+}
+
+.item-list:hover {
+   color: #c94e50 !important;
+}
+
+@keyframes ease {
+   0% {opacity: 0;}
+   100% {opacity: 1;}
+}
+
+@keyframes fadeout {
+   0% {opacity: 1;}
+   100% {opacity: 0;}
+}
