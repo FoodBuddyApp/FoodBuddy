@@ -34,13 +34,16 @@ app.use(function(req, res) {
    res.header("Content-Type", "application/javascript");
 })
 
+var port = process.env.PORT || 5000;
+var host = 'localhost';
+
 new WebpackDevServer(webpack(config), {
    publicPath: config.output.publicPath,
    hot: true,
    historyApiFallback: true
- }).listen(process.env.PORT || 5000, '0.0.0.0', (err) => {
+ }).listen(port, host, (err) => {
    if (err) {
      console.log(err);
    }
-   console.log('Listening at localhost:5000');
+   console.log('Listening at '+host+':'+port);
  });
