@@ -23,11 +23,11 @@ const path = require('path');
 //    console.log('Listening at localhost:5000');
 //  });
 
-app.use(express.static(__dirname + '/static'));
+// app.use(express.static(__dirname + '/static'));
 
-app.get('/', function(request, response) {
-   response.sendFile(__dirname + '/index.html');
- });
+// app.get('/', function(request, response) {
+//    response.sendFile(__dirname + '/index.html');
+//  });
 
 
 app.use(function(req, res) {
