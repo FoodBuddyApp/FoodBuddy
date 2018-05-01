@@ -7,8 +7,7 @@
     "start": "node server.js",
     "build": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.production.js",
     "lint": "eslint --cache --ignore-path .gitignore --format=node_modules/eslint-formatter-pretty . *.js",
-    "test": "npm run lint",
-    "postinstall": "rm -r $PWD/node_modules/lodash-es && ln -s $PWD/node_modules/lodash  $PWD/node_modules/lodash-es"
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
