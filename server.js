@@ -6,7 +6,7 @@ new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true
-}).listen(5000, 'localhost', (err) => {
+}).listen(process.env.PORT || 5000, 'localhost', (err) => {
   if (err) {
     console.log(err);
   }
