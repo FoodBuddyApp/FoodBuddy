@@ -60,10 +60,10 @@ module.exports = {
       'node_modules'
    ]
   },
-  /* devServer: {
+  devServer: {
    compress: true,
-   public: 'murmuring-dusk-37367.herokuapp.com' // That solved it
-  }, */
+   disableHostCheck: true,   // That solved it
+  },    
   devtool: 'source-map',
   plugins: [
    //  new webpack.optimize.OccurenceOrderPlugin(),
