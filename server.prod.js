@@ -38,7 +38,7 @@ new WebpackDevServer(webpack(config), {
    publicPath: config.output.publicPath,
    hot: true,
    historyApiFallback: true
- }).listen(process.env.PORT || 5000, (err) => {
+ }).listen(process.env.PORT || 5000, '0.0.0.0', (err) => {
    if (err) {
      console.log(err);
    }
