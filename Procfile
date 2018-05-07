@@ -1,1 +1,1 @@
-worker: node server.prod.js
+web: node server.prod.js

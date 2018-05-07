@@ -48,10 +48,10 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-//   entry: './scripts/index',
-  entry: [
-   './scripts/index'
-  ],
+  entry: './scripts/index',
+//   entry: [
+//    './scripts/index'
+//   ],
   output: {
     path: path.join(__dirname, 'static'),
    //  path: __dirname,
@@ -64,11 +64,11 @@ module.exports = {
       'node_modules'
    ]
   },
-  devServer: {
-   historyApiFallback: true,
-   compress: true,
-   disableHostCheck: true,   // That solved it
-  },    
+//   devServer: {
+//    historyApiFallback: true,
+//    compress: true,
+//    disableHostCheck: true,   // That solved it
+//   },    
   devtool: 'source-map',
   plugins: [
    //  new webpack.optimize.OccurenceOrderPlugin(),
