@@ -52,6 +52,7 @@ export default class Main extends Component {
                <SideBar visible={this.state.open} />
             </div>
             <div>
+               {/* <Search {...this.props} /> */}
                <Switch>
                   <Route exact path='/'
                      render={() => <Search {...this.props} />} />

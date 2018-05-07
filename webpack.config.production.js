@@ -48,9 +48,13 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: './scripts/index',
+//   entry: './scripts/index',
+  entry: [
+   './scripts/index'
+  ],
   output: {
     path: path.join(__dirname, 'static'),
+   //  path: __dirname,
     filename: 'bundle.js',
     publicPath: '/'
   },
@@ -61,6 +65,7 @@ module.exports = {
    ]
   },
   devServer: {
+   historyApiFallback: true,
    compress: true,
    disableHostCheck: true,   // That solved it
   },    
@@ -77,7 +82,8 @@ module.exports = {
       compress: {
         warnings: false
       }
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   module: {
     loaders: [
