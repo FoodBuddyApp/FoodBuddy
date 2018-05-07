@@ -69,3 +69,17 @@ export function getRecipeDetail(body) {
    return get('recipe/' + body.id)
       .then((res) => res.json())
 }
+
+export function signup(body) {
+   return post('signup', body)
+      .then((res) => {
+         return res.json();
+      })
+}
+
+export function login(body) {
+   return post('login', body)
+      .then((res) => {
+         return res.json();
+      })
+}

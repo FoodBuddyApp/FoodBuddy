@@ -8,6 +8,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 import {Search, Recipes, RecipeDetail} from '../index.js';
 import HamburgerMenu from 'react-hamburger-menu';
 import SideBar from '../SideBar/SideBar';
+import Signup from '../Signup/Signup';
+import Login from '../Login/Login';
 
 export default class Main extends Component {
    constructor(props) {
@@ -24,8 +26,19 @@ export default class Main extends Component {
       });
   }
 
+   displayUser() {
+      let user = window.sessionStorage.getItem("user") == null ? "Guest" : window.sessionStorage.getItem("user");
+
+      return (
+         <Navbar.Text pullRight>
+            {`Welcome ${user}!`}
+         </Navbar.Text>
+      );
+   }
+
 
    render() {
+      console.log("props", this.props);
       return (
          <div>
             <div>
@@ -48,14 +61,21 @@ export default class Main extends Component {
                         <a href="/">Food Buddy</a>
                      </Navbar.Brand>
                   </Navbar.Header>
+
+                  {this.displayUser()}
+                  
                </Navbar>
-               <SideBar visible={this.state.open} />
+               <SideBar {...this.props} visible={this.state.open}/>
             </div>
             <div>
                {/* <Search {...this.props} /> */}
                <Switch>
                   <Route exact path='/'
                      render={() => <Search {...this.props} />} />
+                  <Route path='/signup'
+                     render={() => <Signup {...this.props} />} />
+                  <Route path='/login'
+                     render={() => <Login {...this.props} />} />
                   <Route path='/recipes'
                      render={() => {
                         if(this.props.Recipes)

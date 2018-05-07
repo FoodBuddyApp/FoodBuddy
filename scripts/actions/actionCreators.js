@@ -17,6 +17,15 @@ export function searchRecipes(url, cb) {
    }
 }
 
+export function authenticateUser(token, cb) {
+   return (dispatch, prevState) => {
+      let user = JSON.parse(window.atob(token.split('.')[1]));
+      window.sessionStorage.setItem("user", user["userName"]);
+      window.sessionStorage.setItem("token", token);
+      dispatch({type: 'SUCCESFUL_LOGIN', token});
+   }
+}
+
 export function getRecipeDetail(body, cb) {
    return (dispatch, prevState) => {
       api.getRecipeDetail(body)
