@@ -13,6 +13,242 @@ export default class RecipeDetail extends Component {
    }
 
    componentWillMount() {
+      if(this.props.RecipeDetail)
+         this.setState({recipe: this.props.RecipeDetail});
+   }
+
+   renderRating(rating) {
+      let arr = [];
+      
+      for(let i = 0; i < rating; i++) {
+         arr.push(<i key={i} className="fa fa-fw fa-star" />);
+      }
+
+      if(parseInt(this.state.recipe.rating) - rating > 0)
+         arr.push(<i className="fa fa-fw fa-star-half" />);
+      
+      return (
+         <div className="verticallyAlignedText">
+            {arr}
+         </div>
+      );
+   }
+
+   renderRecipeProperties() {
+      return (
+         <div className="properties">
+
+            <div className="propertyBlock">
+               <h4>Rating:</h4>
+               {this.renderRating(Math.floor(parseInt(this.state.recipe.rating)))}
+            </div>
+
+            <div className="propertyBlock">
+               <h4>Time:</h4>
+               
+               <div className="verticallyAlignedText">
+                  <p>{this.state.recipe.totalTime}</p>
+               </div>
+            </div>
+
+            <div className="propertyBlock">
+               <h4>Serving Count:</h4>
+               
+               <div className="verticallyAlignedText">
+                  <p>{this.state.recipe.numberOfServings}</p>
+               </div>
+            </div>
+
+            <div className="propertyBlock">
+               <h4>Course:</h4>
+               
+               <div className="verticallyAlignedText">
+                  <p>
+                     {this.state.recipe.attributes.course ? 
+                        this.state.recipe.attributes.course.map((crs, idx) => {
+                           if(this.state.recipe.attributes.course.length - idx > 1)
+                              return `${crs}, `
+                           return `${crs}`
+                        }) : null}
+                  </p>
+               </div>
+            </div>
+
+
+         </div>
+      );
+   }
+
+   renderDetailsCard() {
+      return (
+         <div className="centered-div-smaller">
+            <div className="cell card fixedHeight">
+               
+               <div className="title">
+                  <h1>{this.state.recipe.name}</h1>
+               </div>
+
+               <div className="recipeDetails">
+                  <div className="recipeDetailBlock">
+                     <img className="recipeDetailImage" src={this.state.recipe.images[0].imageUrlsBySize["90"].split("=s90-c")[0]} />
+                  </div>
+                  
+                  <div className="recipeDetailBlock">
+                     {this.renderRecipeProperties()}
+                  </div>
+               </div>
+               
+            </div>
+         </div>
+      );
+   }
+
+   renderIngredients() {
+      return (
+         <div className="centered-div-smaller">
+            <div className="cell dynamicHeight">
+               
+               <div className="title">
+                  <h1>Ingredients</h1>
+               </div>
+
+               <div className="ingredientsDetails">
+                  <div className="ingredientsDetailBlock">
+                     {this.state.recipe.ingredientLines.map((ingr, idx) => {
+                        return (
+                           <div className="propertyBlock">
+                              <div className="verticallyAlignedText">
+                                 <p>{`• ${ingr}`}</p>
+                              </div>
+                           </div>
+                        );
+                     })}
+                  </div>
+               </div>
+               
+            </div>
+         </div>
+      );
+   }
+
+   renderNutrition() {
+      return (
+         <div className="centered-div-smaller">
+            <div className="cell card">
+               
+               <div className="title">
+                  <h1>Nutrition</h1>
+               </div>
+
+               <div className="ingredientsDetails">
+                  <div className="ingredientsDetailBlock">
+                     
+                     <div className="propertyBlock">
+                        <h4>Calories:</h4>
+                        
+                        <div className="verticallyAlignedText">
+                           <p>{this.state.recipe.nutritionEstimates.filter(nutr => {
+                              console.log(nutr);
+                              if(nutr.attribute === "ENERC_KCAL")
+                                 return nutr.value + " calories";
+                              })}
+                           </p>
+                        </div>
+                     </div>
+
+                     <div className="propertyBlock">
+                        <h4>Total Fat:</h4>
+                        
+                        <div className="verticallyAlignedText">
+                           <p>{this.state.recipe.nutritionEstimates.filter(nutr => {
+                              if(nutr.attribute === "FAT")
+                                 return nutr.value + " grams";
+                              })}
+                           </p>
+                        </div>
+                     </div>
+
+                     <div className="propertyBlock">
+                        <h4>Protein:</h4>
+                        
+                        <div className="verticallyAlignedText">
+                           <p>{this.state.recipe.nutritionEstimates.filter(nutr => {
+                              if(nutr.attribute === "PROCNT")
+                                 return nutr.value + " grams";
+                              })}
+                           </p>
+                        </div>
+                     </div>
+
+                     <div className="propertyBlock">
+                        <h4>Cholesterol:</h4>
+                        
+                        <div className="verticallyAlignedText">
+                           <p>{this.state.recipe.nutritionEstimates.filter(nutr => {
+                              if(nutr.attribute === "CHOLE")
+                                 return nutr.value + " grams";
+                              })}
+                           </p>
+                        </div>
+                     </div>
+
+                     <div className="propertyBlock">
+                        <h4>Sodium:</h4>
+                        
+                        <div className="verticallyAlignedText">
+                           <p>{this.state.recipe.nutritionEstimates.filter(nutr => {
+                              if(nutr.attribute === "NA")
+                                 return nutr.value + " grams";
+                              })}
+                           </p>
+                        </div>
+                     </div>
+
+                     <div className="propertyBlock">
+                        <h4>Sugar:</h4>
+                        
+                        <div className="verticallyAlignedText">
+                           <p>{this.state.recipe.nutritionEstimates.filter(nutr => {
+                              if(nutr.attribute === "SUGAR")
+                                 return nutr.value + " grams";
+                              })}
+                           </p>
+                        </div>
+                     </div>
+
+                     <div className="propertyBlock">
+                        <h4>Fiber:</h4>
+                        
+                        <div className="verticallyAlignedText">
+                           <p>{this.state.recipe.nutritionEstimates.filter(nutr => {
+                              if(nutr.attribute === "FIBTG")
+                                 return nutr.value + " grams";
+                              })}
+                           </p>
+                        </div>
+                     </div>
+
+                  </div>
+               </div>
+               
+            </div>
+         </div>
+      );
+   }
+
+   render() {
+      console.log(this.props);
+
+      return (
+         <div>
+            {this.renderDetailsCard()}
+            {this.renderIngredients()}
+            {/* {this.renderNutrition()} */}
+         </div>
+      );
+   }
+
+   /* componentWillMount() {
       let recipe = this.props.Recipes.filter(recipe => {
          return recipe.id === this.props.RecipeDetail.id;
       });
@@ -77,6 +313,6 @@ export default class RecipeDetail extends Component {
                }
          </div>
       );
-   }
+   } */
 }
 

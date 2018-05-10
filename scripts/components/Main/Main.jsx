@@ -11,6 +11,8 @@ import SideBar from '../SideBar/SideBar';
 import Signup from '../Signup/Signup';
 import Login from '../Login/Login';
 
+import './Main.css';
+
 export default class Main extends Component {
    constructor(props) {
       super(props);
@@ -41,6 +43,7 @@ export default class Main extends Component {
       console.log("props", this.props);
       return (
          <div>
+            <img className="background" src="../../static/assets/foodBg.jpg"/>
             <div>
                <Navbar>
                   <Navbar.Header>
@@ -84,14 +87,14 @@ export default class Main extends Component {
                            return <Redirect to='/' />
                      }}
                   />
-                  <Route path='/detail/:id'
+                  <Route path='/recipe/:id'
                      render={({match}) => {
                         console.log(match)
                         var recipe = this.props.Recipes.find((recipe) => 
                            recipe.id == match.params.id)
                         if(recipe) {
                            return <RecipeDetail 
-                                    {...recipe}
+                                    // {...recipe}
                                     {...this.props} 
                                   />
                         }

@@ -11,7 +11,8 @@ export function searchRecipes(url, cb) {
    return (dispatch, prevState) => {
       api.getRecipes(url)
          .then((response) => {
-            dispatch({type: 'GET_RECIPES', recipes: response.results})
+            console.log(response);
+            dispatch({type: 'GET_RECIPES', recipes: response.matches})
          })
          .then(() => cb())
    }

@@ -19,12 +19,16 @@ export default class Recipes extends Component {
             <div className="list">
                {this.props.Recipes.map((recipe) => {
                   return <RecipeSummary
-                           title={recipe.title}
+                           title={recipe.recipeName}
                            key={recipe.id}
                            id={recipe.id}
-                           image={recipe.image}
-                           usedIngredients={recipe.usedIngredients}
-                           missedIngredients={recipe.missedIngredients}
+                           rating={recipe.rating}
+                           image={recipe.imageUrlsBySize["90"].split('=s90-c')[0]}
+                           time={parseInt(recipe.totalTimeInSeconds)/60}
+                           ingredients={recipe.ingredients}
+                           attributes={recipe.attributes}
+                           // usedIngredients={recipe.usedIngredients}
+                           // missedIngredients={recipe.missedIngredients}
                            {...this.props} 
                         />
                })}

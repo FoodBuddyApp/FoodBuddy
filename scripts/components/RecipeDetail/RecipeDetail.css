@@ -29,15 +29,110 @@
    margin-left: 10px
 }
 
-.info {
-   position: absolute;
-   bottom: 0;
-}
-
 .right {
    text-align: right;
 }
 
+.recipeDetailImage {
+   border-right: solid;
+   height: 100%;
+}
+
+.recipeDetails {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   flex: 1;
+   background: rgba(255,255,255, 0.7);
+}
+
+.ingredientsDetails {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   flex: 1;
+   background: rgba(255,255,255, 0.7);
+}
+
+.verticallyAlignedText {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+.verticallyAlignedText p {
+   font-size: 15px;
+   margin: 0 !important;
+}
+
+.properties {
+   display: flex;
+   justify-content: space-evenly;
+   flex-direction: column;
+   height: 100%;
+   margin: 15px;
+}
+
+.properties h4 {
+   padding-right: 10px;
+}
+
+.propertyBlock {
+   display: flex;
+   width: 100%;
+}
+
+.fixedHeight { 
+   height: 400px;
+}
+
+.dynamicHeight {
+   /* flex-grow: 1; */
+   height: auto;
+}
+
+.centered-div-smaller {
+   position: relative;
+   text-align: center;
+   width: 900px;
+   margin: 100px auto;
+   display: flex;
+   flex-direction: column;
+}
+
+.recipeDetailBlock {
+   width: 50%;
+   display: flex;
+   flex-direction: column;
+   flex: 1;
+}
+
+.ingredientsDetailBlock {
+   /* width: 100%; */
+   display: flex;
+   flex-direction: column;
+   /* flex: 1; */
+   justify-content: space-between;
+   margin: 20px;
+}
+
+.ingredientsDetailBlock p {
+   font-size: 20px;
+}
+
+.title {
+   display: flex;
+   justify-content: center;
+   background: rgba(196, 185, 199, 0.8);
+   border-bottom: solid;
+}
+
+.card {
+   /* height: 80vh; */
+   /* height: 400px; */
+   display: flex;
+   flex-direction: column;
+}
 
 cell {
    border-style: solid;

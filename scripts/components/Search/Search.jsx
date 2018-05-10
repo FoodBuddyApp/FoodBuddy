@@ -50,12 +50,13 @@ export default class Search extends Component {
       let diet = this.props.Options.diet;
       let intolerances = this.props.Options.intolerances;
       this.setState({loading: true, error: false})
-      let url = 'recipe?includeIngredients=';
+      // let url = 'recipe?includeIngredients=';
+      let url = 'recipe?';
       
       //ingredients
       this.state.ingredients.map((ingr, idx) => {
          if(this.state.ingredients.length - idx > 1)
-            url += `${ingr.toLowerCase()}%2C`;
+            url += `${ingr.toLowerCase()}+`;
          else
             url += `${ingr.toLowerCase()}&`;
       })
@@ -80,7 +81,8 @@ export default class Search extends Component {
             url += `${item.label.toLowerCase()}&`;
       })
 
-      url += `number=10&fillIngredients=true&instructionsRequired=true&ranking=1`;
+      // url += `number=10&fillIngredients=true&instructionsRequired=true&ranking=1`;
+      url += 'requirePictures=true';
       console.log(url);
 
       // this.props.searchRecipes({includeIngredients: this.state.ingredients}, this.transitionToRecipes)
