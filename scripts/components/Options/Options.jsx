@@ -7,30 +7,27 @@ export default class Options extends Component {
    constructor(props) {
       super(props);
 
-      //dairy, egg, gluten, peanut, sesame, seafood, shellfish, soy, sulfite, tree nut, and wheat.
+      //Lacto vegetarian, Ovo vegetarian, Pescetarian, Vegan, Vegetarian
       this.state = {
          diet: [
-            { id: 0, label: "Pescetarian" },
-            { id: 1, label: "Laco Vegetarian" },
-            { id: 2, label: "Ovo Vegetarian" },
-            { id: 3, label: "Vegan" },
-            { id: 4, label: "Paleo" },
-            { id: 5, label: "Primal" },
-            { id: 6, label: "Vegetarian" }
+            { id: 0, prefix: "390^Pescetarian", label: "Pescetarian" },
+            { id: 1, prefix: "388^Lacto vegetarian", label: "Laco Vegetarian" },
+            { id: 2, prefix: "389^Ovo vegetarian", label: "Ovo Vegetarian" },
+            { id: 3, prefix: "386^Vegan", label: "Vegan" },
+            { id: 4, prefix: "387^Lacto-ovo vegetarian", label: "Vegetarian" }
          ],
          selectedDiet: [],
          intolerances: [
-            { id: 0, label: "Dairy" },
-            { id: 1, label: "Egg" },
-            { id: 2, label: "Gluten" },
-            { id: 3, label: "Peanut" },
-            { id: 4, label: "Sesame" },
-            { id: 5, label: "Seafood" },
-            { id: 6, label: "Shellfish" },
-            { id: 7, label: "Soy" },
-            { id: 8, label: "Sulfite" },
-            { id: 9, label: "Tree Nut" },
-            { id: 10, label: "Wheat" }
+            { id: 0, prefix: "396^Dairy-Free", label: "Dairy" },
+            { id: 1, prefix: "397^Egg-Free", label: "Egg" },
+            { id: 2, prefix: "393^Gluten-Free", label: "Gluten" },
+            { id: 3, prefix: "394^Peanut-Free", label: "Peanut" },
+            { id: 4, prefix: "399^Sesame-Free", label: "Sesame" },
+            { id: 5, prefix: "398^Seafood-Free", label: "Seafood" },
+            { id: 6, prefix: "400^Soy-Free", label: "Soy" },
+            { id: 7, prefix: "401^Sulfite-Free", label: "Sulfite" },
+            { id: 8, prefix: "395^Tree Nut-Free", label: "Tree Nut" },
+            { id: 9, prefix: "392^Wheat-Free", label: "Wheat" }
          ],
          selectedIntolerances: []
       };

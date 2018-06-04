@@ -63,22 +63,19 @@ export default class Search extends Component {
 
       //diet
       diet.map((item, idx) => {
-         if(idx == 0)
-            url += `diet=`;
+         console.log(item);
          if(diet.length - idx > 1)
-            url += `${item.label.toLowerCase()}%2C`;
+            url += `allowedDiet[]=${item.prefix}%2C`;
          else
-            url += `${item.label.toLowerCase()}&`;
+            url += `allowedDiet[]=${item.prefix}&`;
       })
 
       //intolerances 
       intolerances.map((item, idx) => {
-         if(idx == 0)
-            url += `intolerances=`;
          if(intolerances.length - idx > 1)
-            url += `${item.label.toLowerCase()}%2C`;
+            url += `allowedAllergy[]=${item.prefix}%2C`;
          else
-            url += `${item.label.toLowerCase()}&`;
+            url += `allowedAllergy[]=${item.prefix}&`;
       })
 
       // url += `number=10&fillIngredients=true&instructionsRequired=true&ranking=1`;
